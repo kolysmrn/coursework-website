@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Cuprum|Lobster|Marck+Script|Neucha|Pacifico|Pangolin');
+body {
+  font-family: 'Neucha', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  background: #1c1c1c;
+  color: #e5e5e5;
+  height: 100px;
+}
+
+.heading h2 {
+  display: inline-block;
+  color : #eae727;
+  font-size: 35px;
+  letter-spacing: 8px;
+  margin-left: 20px;
+  text-shadow: 2px 3px #000000;
+  float: left;
+  font-family: "Pacifico";
+}
+
+
+.menu {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.menu li {
+  float: left;
+  display: block;
+  margin-left: 150px;
+  margin-top: 50px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 21px;
+  color: white;
+  display: inline-block;
+  position: relative;
+}
+
+#comments::before,
+#comments::after{
+    content: '';
+    position: absolute;
+    width: 0.001%;
+    height: 2px;
+    background: #a51010;
+    transition: 1.5s;
+    top: 160%;
+}
+
+#comments::before{
+     left: 50%;
+}
+#comments::after{
+    right: 50%;
+}
+#comments::before,
+#comments::after{
+    width: 80%;
+}

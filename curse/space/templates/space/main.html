@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'space/main.css' %}">
+  <title>Solar Eclipse</title>
+</head>
+<body>
+
+    <header>
+      <div class="heading">
+        {% if user.is_authenticated %}
+          <h2 class = "auth">{{user.username}}</h2>
+          <h2 class = "auth">/</h2>
+          <h2 class = "auth"><a href="{% url 'logout' %}">Выход</a></h2>
+        {% else %}
+          <h2 class = "auth"><a href = "{% url 'login' %}">Вход</a></h2>
+          <h2 class = "auth">/</h2>
+          <h2 class = "auth"><a href="{% url 'space-register' %}">Регистрация</a></h2>
+        {% endif %}
+
+        <nav>
+          <ul class="menu">
+            <li><a href="{% url 'space-main' %}" id="home">Главная</a></li>
+            <li><a href="{% url 'space-history'%}">История</a></li>
+            <li><a href="{% url 'space-records' %}">Рекорды</a></li>
+            <li><a href="{% url 'space-graph' %}">График</a></li>
+            <li><a href="{% url 'space-comments' %}">Статьи</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+  <section class= "about">
+
+    <div class="text">
+      <h4>Здесь можно узнать о космосе больше</h4>
+    </div>
+    <div class="title">
+      <h5>Кратко о разделах</h5>
+    </div>
+
+    <div class="section">
+      <div class="section-item">
+        <img src="{% static 'space/img/satellite.jpg' %} " width="140px" height="120px" style="border-radius: 80%" class="rot">
+        <h6>История</h6>
+        <p>
+          История о первых полетах в космос, первых кораблях и спутниках
+        </p>
+        <a href="{% url 'space-history'%}">Перейти</a>
+      </div>
+      <div class="section-item">
+        <img src="{% static 'space/img/Astronaut.jpg'%}" width="140px" height="120px" style="border-radius: 80%" class="rot">
+        <h6>Рекорды</h6>
+        <p>
+           Рекорды, связанные с космонавтикой или даже с самим космосом
+        </p>
+        <a href="{% url 'space-records' %}">Перейти</a>
+      </div>
+      <div class="section-item">
+        <img src="{% static 'space/img/Jupiter.jpg' %}" width="140px" height="120px" style="border-radius: 80%" class="rot">
+        <h6>Планеты</h6>
+        <p>
+          Содержит краткое описание планет солнечной системы
+        </p>
+        <a href="{% url 'space-graph' %}">Перейти</a>
+      </div>
+  </section>
+
+  <section id = "animation">
+    <button type="button" onclick="makeVisiable()">Показать анимацию</button>
+    <button type="button" onclick="makeHidden()">Скрыть анимацию</button>
+    <div class="wrapper">
+      <div id="anim" style="visibility: hidden">                         
+        <img src="{% static 'space/img/earth.png' %}" class="earth">
+        <img src="{% static 'space/img/moon2.png' %}" class="moon">
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="contacts">            
+      <ul class="footer">
+        <li id = "test">Украина</li>
+        <li>Телефон: +380966534567</li>
+        <li>Почта: solareclispe@gmail.com</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+
+    function makeVisiable(){
+          document.getElementById("anim").style.visibility = 'visible';
+    }
+
+    function makeHidden(){
+      document.getElementById("anim").style.visibility = 'hidden';
+    }
+
+  </script>
+
+
+</body>
+</html>

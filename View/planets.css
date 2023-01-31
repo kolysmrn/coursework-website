@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Cuprum|Lobster|Marck+Script|Neucha|Pacifico|Pangolin');
+body {
+  font-family: 'Neucha', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+
+.heading {
+  background: #1c1c1c;
+  color: #e5e5e5;
+  height: 100px;
+}
+
+.heading h2 {
+  display: inline-block;
+  color : #eae727;
+  font-size: 35px;
+  letter-spacing: 8px;
+  margin-left: 20px;
+  text-shadow: 2px 3px #000000;
+  float: left;
+  font-family: "Pacifico";
+}
+
+
+.menu {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.menu li {
+  float: left;
+  display: block;
+  margin-left: 190px;
+  margin-top: 50px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 21px;
+  color: white;
+  display: inline-block;
+  position: relative;
+}
+
+#planets::before,
+#planets::after{
+    content: '';
+    position: absolute;
+    width: 0.001%;
+    height: 2px;
+    background: #a51010;
+    transition: 0.3s;
+    top: 160%;
+}
+
+#planets::before{
+     left: 50%;
+}
+#planets::after{
+    right: 50%;
+}
+#planets::before,
+#planets::after{
+    width: 80%;
+}
+
+#planet{
+  background: #d8d8d8;
+  padding-bottom: 100px;
+}
+
+.container{
+  margin: 0 auto;
+  width: 830px;
+  height: 650px;
+  padding: 5px;
+}
+
+.container h1 {
+  padding-top: 60px;
+  text-align: center;
+  font-size: 30px;
+}
+
+
+
+p {
+  line-height: 30px;
+  font-size: 20px;
+}
+
+
+

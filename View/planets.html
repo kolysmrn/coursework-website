@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="planets.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+  <title>Document</title>
+
+  <style>
+      .mainText {
+          text-align: center;
+          font-size: 10px;
+      }
+
+      .graphic-cont {
+          width: 60%;
+          height: 600px;
+          margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="heading">
+      <h2>Solar Eclipse</h2>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="records.html">Рекорды</a></li>
+          <li><a href="planets.html" id="planets">График</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="planet">
+    <div class="container">
+        <h1>Статистика расследованных преступлени в штате Trinity</h1>
+        <div class="graphic-cont">
+          <input type="text" onchange = "request(this)">
+          <button>Отправить</button>
+          <h1 class="mainText">COUNTY: Trinity <br /> REGION: 5-Beaumont</h1>
+          <canvas id="graphic"></canvas>
+        </div>
+    </div>
+  </section>
+
+  
+  <script>
+    // Declaration of variabels
+    var completed_investigations = [];
+    var num = 0;
+    var fiscal_year = [];
+
+    // Ajax request
+    function request(value) {
+        var city = value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var jsonData = JSON.parse(xhttp.responseText);
+
+                console.log(JSON.parse(xhttp.responseText));
+
+                for (i = 0; i < 1000; i++) {
+                    if (jsonData[i].name === city) {
+                        completed_investigations[num] = jsonData[i].coord.lat;
+                        // fiscal_year[num] = jsonData[i].fiscal_year;
+                        num = num + 1;
+                    }
+                }
+
+                build(completed_investigations);
+
+            }
+        };
+
+        xhttp.open('GET', 'city.list.json', true);
+        xhttp.send();
+    }
+    
+    // Visualization data
+    function build (temp_i) {
+        var ctx = document.getElementById('graphic').getContext('2d');
+        var chart = new Chart (ctx, {
+            type: 'line',
+            data: {
+                labels: ["2008", "2009", "2010", "2011"],
+                datasets: [{
+                    label: "Completed investigations",
+                    //backgroundColor: "#d12121",
+                    borderColor: "#ed1515",
+                    borderWidth: '3',
+                    data: temp_i,
+                }]
+            },
+
+            options: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: 80,
+                    fontColor: "black"
+                }
+            },
+
+           
+        });
+    }
+
+ 
+  </script>
+  
+</body>
+</html>

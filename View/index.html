@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Solar Eclipse</title>
+</head>
+<body>
+
+    <header>
+      <div class="heading">
+        <!-- <h2>Solar Eclipse</h2> -->
+        <h2 class = "auth"><a href = "#">Вход</a></h2>
+        <h2 class = "auth">/</h2>
+        <h2 class = "auth"><a href="#">Регистрация</a></h2>
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html" id="home">Главная</a></li>
+            <li><a href="history.html">История</a></li>
+            <li><a href="records.html">Рекорды</a></li>
+            <li><a href="planets.html">Погода</a></li>
+            <li><a href="#">Отзывы</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+  <section class= "about">
+
+    <div class="text">
+      <h4>Здесь можно узнать о космосе больше</h4>
+    </div>
+    <div class="title">
+      <h5>Кратко о разделах</h5>
+    </div>
+
+    <div class="section">
+      <div class="section-item">
+        <img src="img/satellite.jpg" width="140px" height="120px" style="border-radius: 80%" class="rot"> <!--Изоюражение спутника -->
+        <h6>История</h6>
+        <p>
+          История о первых полетах в космос, первых кораблях и спутниках
+        </p>
+        <a href="history.html">Перейти</a>
+      </div>
+      <div class="section-item">
+        <img src="img/Astronaut.jpg" width="140px" height="120px" style="border-radius: 80%" class="rot"> <!-- Изображение астронавта-->
+        <h6>Рекорды</h6>
+        <p>
+           Рекорды, связанные с космонавтикой или даже с самим космосом
+        </p>
+        <a href="records.html">Перейти</a>
+      </div>
+      <div class="section-item">
+        <img src="img/Jupiter.jpg" width="140px" height="120px" style="border-radius: 80%" class="rot"> <!--Изображение Юпитера -->
+        <h6>Планеты</h6>
+        <p>
+          Содержит краткое описание планет солнечной системы
+        </p>
+        <a href="planets.html">Перейти</a>
+      </div>
+  </section>
+
+  <section id = "animation">
+    
+    <div class="wrapper">
+      <button type="button" onclick="makeVisiable()">Показать анимацию</button>
+      <button type="button" onclick="makeHidden()">Скрыть анимацию</button>
+      <div id="anim">                         <!--Здесь находится анимация вращающейся луны -->
+        <img src="img/earth.png" class="earth">
+        <img src="img/moon2.png" class="moon">
+      </div>
+
+      <!-- <div class="form">
+        <div class="review-text">
+          <h1>Ваш отзыв о сайте</h1>
+        </div>
+
+        <div class="review">                                  
+          <form action="">
+            <label>Логин</label><br>
+            <input type="text" id = "loging" onchange="login(this)"><label id = "log"></label><br>                  
+            <label>Пароль</label><br>
+            <input type="password" id = "passw"><label id = "pass"></label><br>                
+            <label>Отзыв</label><br>
+            <textarea name="name" rows="8" cols="50", id = "review"></textarea><br>
+            <label id = "rew" style = "visibility: hidden">Спасибо за отзыв</label>   
+            <input type="button"  value="Отправить" onclick="sendReview()">
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="contacts">             <!-- конктатная информация-->
+      <ul class="footer">
+        <li id = "test">Украина</li>
+        <li>Контакты</li>
+        <li>Помощь</li>
+        <li>О сайте</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    function makeVisiable(){
+          document.getElementById("anim").style.visibility = 'visible';
+    }
+
+    function makeHidden(){
+      document.getElementById("anim").style.visibility = 'hidden';
+    }
+
+    function login(a)
+    {
+      var log = "login";
+      if (a.value == log){
+        document.getElementById("log").innerHTML = "Этот логин занят";
+        document.getElementById("loging").value = "";
+      }
+      else {
+        document.getElementById("log").innerHTML = "";
+      }
+    }
+
+    function sendReview(){
+        if ( (document.getElementById("loging").value == "") && (document.getElementById("passw").value == "")){
+          document.getElementById("log").innerHTML = "Введите логин";
+          document.getElementById("pass").innerHTML = "Введите пароль";
+          document.getElementById("rew").style.visibility = 'hidden';
+        }
+
+        else if (document.getElementById("loging").value == "") {
+          document.getElementById("pass").innerHTML = "";
+          document.getElementById("log").innerHTML = "Введите логин";
+          document.getElementById("rew").style.visibility = 'hidden';
+        }
+
+        else if ( document.getElementById("passw").value == "" ) {
+          document.getElementById("pass").innerHTML = "Введите пароль";
+          document.getElementById("log").innerHTML = "";
+          document.getElementById("rew").style.visibility = 'hidden';
+        }
+
+        else {
+          document.getElementById("pass").innerHTML = "";
+          document.getElementById("log").innerHTML = "";
+          document.getElementById("passw").value = "";
+          document.getElementById("loging").value = "";
+          document.getElementById("review").value = "";
+          document.getElementById("rew").style.visibility = "visible";
+        }
+
+    }
+
+
+  </script>
+
+
+</body>
+</html>

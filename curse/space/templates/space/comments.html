@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'space/history.css' %}">
+  <title>Comments</title>
+  <style>
+    .navig {
+      margin: 0 auto;
+      width: 770px;
+      border-left: 2px solid grey;
+      border-right: 2px solid grey;
+      padding: 5px;
+      background: white;
+      }
+
+      .content {
+      width: 560px;
+      margin-left: 50px;
+      }
+
+      .btn {
+      font-size: 18px;
+      padding: 8px;
+      }
+
+      .new_article {
+      text-decoration: none;
+      color: black;
+      }
+
+      span {
+      font-size: 18px;
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="heading">
+      <h2>Solar Eclipse</h2>
+      <nav>
+        <ul class="menu">
+          <li><a href="{% url 'space-main' %}">Главная</a></li>
+          <li><a href="{% url 'space-history'%}">История</a></li>
+          <li><a href="{% url 'space-records' %}">Рекорды</a></li>
+          <li><a href="{% url 'space-graph' %}">График</a></li>
+          <li><a href="{% url 'space-comments' %}" id = "comments">Статьи</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id = "posts">
+
+      <div class="navig">
+        <button class = "btn"><a href="{% url 'post-create' %}" class = "new_article">Добавить статью</a></button>
+        <button class = "btn" onclick="showComments()">Показать статьи</button>
+        <button class = "btn" onclick= "clr()">Скрыть статьи</button>
+        <span>Поиск по автору</span>
+        <input type="text" id = "inpt" style="padding: 8px" onchange="search()">
+        <div id ="load">
+        </div>
+      </div>
+      
+  </section>
+
+
+  <script>
+
+    function clr() {
+      document.getElementById("load").innerHTML = '';
+    }
+
+    var url = 'http://127.0.0.1:8000/reviews/?format=json';
+
+    function search() {
+      document.getElementById("load").innerHTML = '';
+      var xhttp = new XMLHttpRequest()
+      xhttp.open("GET", url)
+      xhttp.onload = function() {
+        console.log(xhttp.responseText);
+        var data = JSON.parse(xhttp.responseText);
+        searchAuthor(data);
+      }
+      xhttp.send()
+    }
+
+    function searchAuthor(data) {
+      var container = document.getElementById("load");
+      var name = document.getElementById("inpt").value
+      for (var i = 0; i < data.length; i++) {
+        if (name == data[i].author){
+          container.insertAdjacentHTML('beforeend',  '<hr>' +
+          ' <p class = "date"> Дата:  ' + data[i].date_posted + ' <br>Автор: ' + data[i].author +'<br>Название: ' +
+          data[i].title  + '</p><p class = "content">' + data[i].content + ' </p> '
+      ) }
+      }
+    }
+
+    function showComments() {
+      var xhttp = new XMLHttpRequest()
+      xhttp.open("GET", url)
+      xhttp.onload = function() {
+          console.log(xhttp.responseText);
+          var data = JSON.parse(xhttp.responseText);
+          renderHTML(data);
+      }
+      xhttp.send()
+    }
+
+
+    function renderHTML(data){
+      var container = document.getElementById("load")
+      clr();
+      for (var i = 0; i < data.length; i++) {
+        container.insertAdjacentHTML('beforeend',  '<hr>' +
+          ' <p class = "date"> Дата:  ' + data[i].date_posted + ' <br>Автор: ' + data[i].author +'<br>Название: ' +
+          data[i].title  + '</p><p class = "content">' + data[i].content + ' </p> '
+      )
+
+      }
+
+    }
+  </script>
+</body>
+</html>

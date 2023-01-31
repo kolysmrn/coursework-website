@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{% static 'users/login.css' %}">
+	<title>LogOut</title>
+
+	<style>
+		a {
+			color: red;
+			text-decoration: none;
+			font-size: 15px;
+		}
+
+		.logout {
+			margin-left: 500px;
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="heading">
+		  <h2>Solar Eclipse</h2>
+		  <nav>
+		    <ul class="menu">
+		      <li><a href="{% url 'space-main' %}">Главная</a></li>
+		      <li><a href="{% url 'space-history'%}" id="history">История</a></li>
+		      <li><a href="{% url 'space-records' %}">Рекорды</a></li>
+		      <li><a href="{% url 'space-graph' %}">График</a></li>
+		      <li><a href="{% url 'space-comments' %}">Статьи</a></li>
+		    </ul>
+		  </nav>
+		</div>
+	</header>
+
+	<div class="logout">
+		<h1>Вы совершили выход со своего аккаунта</h1>
+		<small><a href="{% url 'space-main' %}">Вернуть на главную</a></small>
+	</div>
+</body>
+</html>

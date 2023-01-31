@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Cuprum|Lobster|Marck+Script|Neucha|Pacifico|Pangolin');
+body {
+  font-family: 'Neucha', cursive;
+  margin: 0;              /*  убираем отступы по умолчанию*/
+  padding: 0;
+}
+
+div {
+  box-sizing: border-box; /*Чтобы не изменялся width при измненении padding/margin */
+}
+
+
+.heading {
+  background: #1c1c1c;
+  color: #e5e5e5;
+  height: 100px;
+}
+
+
+.auth {
+  display: inline;
+  font-size: 20px;
+  letter-spacing: 8px;
+  margin-left: 20px;
+  float: left;
+  margin-top: 50px;
+  font-family: sans-serif;
+}
+
+.auth a {
+  color : white;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.auth a:hover {
+  color: red;
+}
+
+
+.menu {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.menu li {
+  float: left;
+  display: block;
+  margin-left: 130px;
+  margin-top: 50px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 21px;
+  color: white;
+  display: inline-block;
+  position: relative;
+}
+
+#home::before,
+#home::after{
+    content: '';
+    position: absolute;
+    width: 0.001%;
+    height: 2px;
+    background: #a51010;
+    transition: 0.3s;
+    top: 160%;
+}
+
+#home::before{
+     left: 50%;
+}
+#home::after{
+    right: 50%;
+}
+#home::before,
+#home::after{
+    width: 80%;
+}
+
+
+
+.text {
+  margin: 0 auto;
+  width: 600px;
+  text-align: center;
+}
+
+h4 {
+  padding-top: 90px;
+  font-size: 40px;
+  font-style: italic;
+}
+
+.about {
+   height: 930px;
+}
+
+.title {
+  padding-top: 120px;
+}
+
+.title h5 {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+/* стилизация раздела о краткой информации*/
+.section {
+  margin-top: 70px;
+  margin-left: 350px;
+}
+
+.section-item {
+  width: 270px;
+  float: left;
+  text-align: center;
+  padding-right: 10px;
+}
+
+.section-item h6 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.section-item p {
+  color: #777777;
+  font-size: 17px;
+}
+
+.section-item a {
+  color: black;
+
+}
+/* графический эффект при наведении на ссылку*/
+.section-item a:hover{
+  text-decoration: none;
+  font-size: 18px;
+  color: #510f0f;
+}
+/* графический эффект при наведении на фотографию*/
+.rot {
+  transition: transform 2s;
+}
+
+.rot:hover
+{
+  transform: rotateY(-40deg);
+}
+
+#animation {
+  height: 590px;
+  background: #1c1c1c;
+}
+/* описываем элемент земля и луна*/
+#anim {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  float: left;
+}
+
+.earth{
+  width: 300px;
+  padding: 100px;
+  position: relative;
+  z-index: 1;
+  animation: linear 40s a infinite;
+}
+/* вращение земли*/
+@keyframes a {
+  0% {transform: rotate(360deg);}
+}
+
+.moon {
+  position: absolute;
+  top: 170px;
+  left: 170px;
+  animation: linear 10s orbita infinite;
+  z-index: 0;
+}
+/* анимация вращения луны вокруг земли*/
+@keyframes orbita {
+  0%{width: 72px;}
+  24%{z-index: 0;}
+  25%{left: 380px; top: 130px; z-index: 2;}
+  50%{width: 128px;}
+  74%{z-index: 2;}
+  75%{top:300px; left:40px; z-index: 0;}
+  100%{width:72px; transform: rotate(360deg);}
+}
+
+.wrapper {
+  margin-left: 500px;
+}
+
+
+/* стилиция конктатной информации*/
+footer {
+  background: #1c1c1c;
+  height: 70px;
+}
+
+
+
+#pass, #log {
+  color: red;
+  padding-left: 20px;
+}
+
+#rew {
+  color: white;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.reg  {
+  background: #d8d8d8;
+  word-spacing: 50px;
+  margin-top: 30px;
+  margin-left: 70px;
+  margin-right: 1200px;
+  height: 160px;
+  line-height: 30px;
+  border: 1px solid black;
+  border-radius: 20%;
+}
+
+.reg h1 {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-left: 30px;
+}
+
+.reg h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.reg h1 a:hover{
+  color: red;
+}
+
+.footer {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.footer li {
+  float: left;
+  display: block;
+  margin-left: 210px;
+  padding: 11px 22px;
+  color: white;
+}
+
+
+#animation button {
+
+}
